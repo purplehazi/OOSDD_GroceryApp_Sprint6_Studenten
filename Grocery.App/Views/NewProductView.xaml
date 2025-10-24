@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Grocery.App.ViewModels"
+             x:Class="Grocery.App.Views.NewProductView"
+             x:DataType="vm:NewProductViewModel"
+             Title="Nieuw Product">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Nieuw Product Toevoegen" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Productnaam:" FontAttributes="Bold"/>
+            <Entry Text="{Binding ProductName}" Placeholder="bijv. Melk"/>
+
+            <Label Text="Voorraad:" FontAttributes="Bold"/>
+            <Entry Text="{Binding Stock}" Placeholder="bijv. 10" Keyboard="Numeric"/>
+
+            <Label Text="Houdbaarheidsdatum:" FontAttributes="Bold"/>
+            <DatePicker Date="{Binding ShelfLifeDateTime}" Format="dd-MM-yyyy"/>
+
+            <Label Text="Prijs:" FontAttributes="Bold"/>
+            <Entry Text="{Binding Price}" Placeholder="bijv. 1.50" Keyboard="Numeric"/>
+
+            <Button Text="Product Toevoegen" 
+                    Command="{Binding AddNewProductCommand}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Margin="0,20,0,0"/>
+
+            <Label Text="{Binding Message}" 
+                   TextColor="Red" 
+                   HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
